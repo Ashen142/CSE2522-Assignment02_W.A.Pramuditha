@@ -6,15 +6,21 @@ namespace CSE2522_Assignment02.Base
 {
     public class TestBase
     {
-        protected IWebDriver driver;
+        protected IWebDriver? driver;
 
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--ignore-certificate-errors");
+            options.AddArgument("--ignore-ssl-errors");
+            options.AddArgument("--allow-insecure-localhost");
+
+            driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://uitestingplayground.com/");
         }
+
 
         [TearDown]
         public void TearDown()
