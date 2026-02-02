@@ -6,7 +6,7 @@ namespace CSE2522_Assignment02.Base
 {
     public class TestBase
     {
-        protected IWebDriver? driver;
+        protected IWebDriver driver = null!;
 
         [SetUp]
         public void Setup()
